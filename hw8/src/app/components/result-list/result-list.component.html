@@ -1,0 +1,84 @@
+<div class="result mb-5">
+    <div class="alert alert-danger w-75 mx-auto d-none" id="no-list" role="alert">
+        No Results.
+    </div>
+    <div class="d-flex flex-row flex-nowrap overflow-auto mx-auto w-75 clearfix" id="results">
+        <div class="artist_card card" style="max-width: 190px; min-width: 190px;" 
+            *ngFor="let c_card of artists;" id="{{ c_card.id }}" (click)="select_artist(c_card.id)">
+            <img class="card-img-top" src="{{ c_card.img }}"/>
+            <div class="artist_name card-body d-flex align-items-center">{{ c_card.name }}</div>
+        </div>
+  </div>
+</div>
+<div class="spinner-border d-none mx-auto mt-2" style="color: #205375;" role="status" id="lower_spin">
+    <span class="visually-hidden">Loading...</span>
+</div>
+<div class="tabs d-none" id="tabs">
+    <ul class="nav nav-pills mb-3 w-75 nav-justified mx-auto d-flex" id="nav-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="tab_btn nav-link active" id="detail-tab" data-bs-toggle="pill" href="#detail-page" type="button" role="tab" aria-selected="true">Artist Info</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="tab_btn nav-link" id="artwork-tab" data-bs-toggle="pill" href="#artwork-page" type="button" role="tab" aria-selected="false">Artworks</button>
+        </li>
+    </ul>
+    <div class="tab-content mb-5" id="all_details">
+        <div class="tab-pane text-center fade show active" id="detail-page" role="tabpanel">
+           <p id="nameyear">{{ selected_detail.Name }} ({{ selected_detail.birthday }} - {{ selected_detail.deathday }})</p>
+           <p id="nation">{{ selected_detail.nation }}</p>
+           <div class="w-75 mx-auto">
+                <p id="bio">{{ selected_detail.biography }}</p>
+           </div>
+        </div>
+        <div class="tab-pane fade" id="artwork-page" role="tabpanel">
+            <div class="alert alert-danger w-75 mx-auto d-none" id="no-artwork" role="alert">
+                No artworks.
+            </div>
+            <div class="row row-cols-1 row-cols-md-4 g-4 mx-auto w-75 d-flex" id="artworks">
+                <div class="col" *ngFor="let a_card of artwork_cards; let i = index;">
+                    <div class="artwork_card card h-100" style="max-width: 250px;"  id="{{ a_card.id }}">
+                        <img class="card-img-top" src="{{ a_card.link }}">
+                        <div class="artwork_name card-body d-flex text-center">
+                            <div class="card_bottom mt-auto mx-auto">
+                                <p>{{ a_card.title }}</p>
+                                <p>{{ a_card.date }}</p>
+                            </div>
+                        </div>
+                        <input type="submit" class="btn btn-primary mb-3 mx-3" style="background:#205375;" 
+                            id="search_artist" value="Categories" (click)="getGenes(i)">
+                    </div>
+                </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header d-flex">
+                <img src="{{ selected_artwork.link }}" class="header-img img" style="max-height:60px; width:auto;">
+                <div class="align-items-center" style="line-height: 5px; margin-left: 5px;">
+                    <p>{{ selected_artwork.title }}</p>
+                    <p>{{ selected_artwork.date }}</p>
+                </div>
+                <button type="button" class="btn-close" data-dismiss="modal" (click)="hideModal()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row row-cols-1 row-cols-md-3 g-4 mx-auto w-75 d-flex" id="artworks">
+                    <div class="col" *ngFor="let g_card of genes;">
+                        <div class="artwork_card card h-100" style="max-width: 250px;">
+                            <img class="card-img-top" src="{{ g_card.img }}">
+                            <div class="artwork_name card-body d-flex text-center">
+                                <div class="card_bottom mt-auto mx-auto">
+                                    <p>{{ g_card.Name }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+

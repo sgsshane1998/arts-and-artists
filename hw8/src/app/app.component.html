@@ -1,0 +1,26 @@
+<div class = "app">
+  <nav class="navbar navbar-expand navbar-light bg-light">
+    <div class="header container-fluid">
+      <a class="navbar-brand">Artist Search</a>
+    </div>
+  </nav>
+  <form class="searchbar" (submit)="engageChild()">
+    <div class="mb-3">
+      <input type="text" class="form-control mx-auto w-75" id="search" placeholder="Please enter an artist name." name="q"  [(ngModel)] = "userInput">
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary mx-1" id="search_artist" value="Submit" [disabled]="userInput === ''" style="display: inline-block; background: #205375;">
+        <span class="spinner-border spinner-border-sm d-none" role="status" id="search_spin"></span>
+        <span>Submit</span>
+      </button>
+      <input type="reset" class="btn btn-primary" id="clear_result" value="Clear" style="background: #6C757D;" (click)="clearField()">
+    </div>
+  </form>
+  <app-result-list [userInput]="userInput"></app-result-list>
+
+  <div id="bottombar">
+    <a href="https://www.artsy.net" target="_blank"><p>Powered by </p></a>
+    <a href="https://www.artsy.net" target="_blank"><img src="../assets/artsy_logo.svg"></a>
+    <a href="https://www.artsy.net" target="_blank"><p>Artsy. </p></a>
+  </div>
+</div>

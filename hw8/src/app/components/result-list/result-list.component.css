@@ -1,0 +1,63 @@
+.artist_card {
+    margin-right: 1px;
+}
+
+.artist_card {
+    background:  #205375;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.artist_card:hover {
+    background: #112B3C;
+}
+
+.unclicked {
+    background: #205375;
+}
+
+.clicked {
+    background: #112B3C;
+}
+
+.tab_btn.active{
+    background-color: #205375;
+    color: white;
+}
+
+.tab_btn {
+    background-color: white;
+    color: #205375;
+}
+
+
+#nameyear {
+    font-size: 15px;
+    line-height: 7px;
+    font-weight: 400;
+}
+
+#nation {
+    line-height: 10px;
+    font-size: 10px;
+}
+
+#bio {
+    color: black;
+    font-size: 10px;
+    font-weight:500;
+    line-height: 14px;
+    text-align: justify;
+}
+
+
+.artwork_name {
+    align-items: baseline;
+}
+
+.card_bottom p {
+    line-height: 15px;
+    margin-bottom: 5px;
+}
+
